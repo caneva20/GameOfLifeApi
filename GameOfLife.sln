@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{ACD49FBA-D30E-4ADC-A674-42647309B361}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{202CB38A-1E8E-41A8-B608-7C14EEA4EB93}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameOfLife.Api", "src\GameOfLife.Api\GameOfLife.Api.csproj", "{017BD7D0-71C1-43BC-813E-87B7D311E53D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameOfLife.Services", "src\GameOfLife.Services\GameOfLife.Services.csproj", "{A5350ADB-1082-476C-BFDD-E74C4B77D2B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameOfLife.Dal", "src\GameOfLife.Dal\GameOfLife.Dal.csproj", "{2C3728DC-C4B4-46EB-95F5-6252AFD97817}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameOfLife.UseCases", "src\GameOfLife.UseCases\GameOfLife.UseCases.csproj", "{3A0A8DF3-817C-4303-981F-E95F67E717FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameOfLife.Tests", "tests\GameOfLife.Tests\GameOfLife.Tests.csproj", "{FC4D0B79-FA50-4ADE-9240-C3857F8E47BB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{017BD7D0-71C1-43BC-813E-87B7D311E53D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{017BD7D0-71C1-43BC-813E-87B7D311E53D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{017BD7D0-71C1-43BC-813E-87B7D311E53D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{017BD7D0-71C1-43BC-813E-87B7D311E53D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5350ADB-1082-476C-BFDD-E74C4B77D2B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5350ADB-1082-476C-BFDD-E74C4B77D2B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5350ADB-1082-476C-BFDD-E74C4B77D2B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5350ADB-1082-476C-BFDD-E74C4B77D2B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C3728DC-C4B4-46EB-95F5-6252AFD97817}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C3728DC-C4B4-46EB-95F5-6252AFD97817}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C3728DC-C4B4-46EB-95F5-6252AFD97817}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C3728DC-C4B4-46EB-95F5-6252AFD97817}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A0A8DF3-817C-4303-981F-E95F67E717FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A0A8DF3-817C-4303-981F-E95F67E717FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A0A8DF3-817C-4303-981F-E95F67E717FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A0A8DF3-817C-4303-981F-E95F67E717FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC4D0B79-FA50-4ADE-9240-C3857F8E47BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC4D0B79-FA50-4ADE-9240-C3857F8E47BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC4D0B79-FA50-4ADE-9240-C3857F8E47BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC4D0B79-FA50-4ADE-9240-C3857F8E47BB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{017BD7D0-71C1-43BC-813E-87B7D311E53D} = {ACD49FBA-D30E-4ADC-A674-42647309B361}
+		{A5350ADB-1082-476C-BFDD-E74C4B77D2B7} = {ACD49FBA-D30E-4ADC-A674-42647309B361}
+		{2C3728DC-C4B4-46EB-95F5-6252AFD97817} = {ACD49FBA-D30E-4ADC-A674-42647309B361}
+		{3A0A8DF3-817C-4303-981F-E95F67E717FE} = {ACD49FBA-D30E-4ADC-A674-42647309B361}
+		{FC4D0B79-FA50-4ADE-9240-C3857F8E47BB} = {202CB38A-1E8E-41A8-B608-7C14EEA4EB93}
+	EndGlobalSection
+EndGlobal
