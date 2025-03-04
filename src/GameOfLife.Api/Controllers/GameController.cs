@@ -1,4 +1,5 @@
-﻿using GameOfLife.Models;
+﻿using GameOfLife.Api.Dtos;
+using GameOfLife.Api.Mapping;
 using GameOfLife.UseCases;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,7 +17,6 @@ public class GameController : ControllerBase {
         _createBoardUseCase = createBoardUseCase;
     }
 
-    //TODO: Add DTO
     /// <summary>
     /// Creates a board
     /// </summary>
@@ -25,10 +25,10 @@ public class GameController : ControllerBase {
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> CreateBoard([FromBody] Board board) {
+    public async Task<IActionResult> CreateBoard([FromBody] BoardDto board) {
         _logger.LogInformation("Creating board");
 
-        var createdBoard = await _createBoardUseCase.CreateBoard(board);
+        var createdBoard = await _createBoardUseCase.CreateBoard(board.ToEntity());
 
         if (createdBoard == null) {
             return BadRequest();
