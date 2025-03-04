@@ -13,6 +13,7 @@
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="Riok.Mapperly" Version="4.1.1" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0"/>
     </ItemGroup>
 
@@ -24,6 +25,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\GameOfLife.Dal\GameOfLife.Dal.csproj" />
+      <ProjectReference Include="..\GameOfLife.UseCases\GameOfLife.UseCases.csproj" />
     </ItemGroup>
 
 </Project>

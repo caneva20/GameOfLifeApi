@@ -1,4 +1,6 @@
 using GameOfLife;
+using GameOfLife.Repositories;
+using GameOfLife.UseCases;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +16,12 @@ builder.Services.AddDbContext<GameOfLifeContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
 });
+
+//Repositories
+builder.Services.AddScoped<IGameRepository, GameRepository>();
+
+//Use cases
+builder.Services.AddScoped<ICreateBoardUseCase, CreateBoardUseCase>();
 
 var app = builder.Build();
 

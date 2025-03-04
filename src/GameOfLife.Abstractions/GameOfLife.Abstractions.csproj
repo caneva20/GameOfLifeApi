@@ -4,14 +4,11 @@
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <RootNamespace>GameOfLife</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\GameOfLife.Dal\GameOfLife.Dal.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Include="JetBrains.Annotations" Version="2024.3.0" />
+      <ProjectReference Include="..\GameOfLife.Models\GameOfLife.Models.csproj" />
     </ItemGroup>
 
 </Project>

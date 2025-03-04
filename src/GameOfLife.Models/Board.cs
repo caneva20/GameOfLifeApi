@@ -2,5 +2,5 @@
 
 public class Board {
     public long Id { get; set; }
-    public BoardCell[] LiveCells { get; set; } = Array.Empty<BoardCell>();
+    public ICollection<BoardCell> LiveCells { get; set; } = new List<BoardCell>();
 }
