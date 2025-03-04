@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace GameOfLife.Dal.Migrations
+namespace GameOfLife.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration
