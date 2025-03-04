@@ -24,6 +24,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\GameOfLife.Dal\GameOfLife.Dal.csproj" />
+      <ProjectReference Include="..\GameOfLife.UseCases\GameOfLife.UseCases.csproj" />
     </ItemGroup>
 
 </Project>
