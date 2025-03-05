@@ -27,6 +27,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\src\GameOfLife.Services\GameOfLife.Services.csproj" />
       <ProjectReference Include="..\..\src\GameOfLife.UseCases\GameOfLife.UseCases.csproj" />
     </ItemGroup>
 
