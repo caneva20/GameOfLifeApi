@@ -16,4 +16,10 @@ public interface IGameRepository {
     /// <param name="boardId">The board id</param>
     /// <returns>The board if found, null otherwise</returns>
     Task<Board?> GetBoard(long boardId);
+
+    /// <summary>
+    /// Deletes a game board
+    /// </summary>
+    /// <param name="board">The board to be deleted</param>
+    Task DeleteBoard(Board board);
 }

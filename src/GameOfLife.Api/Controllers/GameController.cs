@@ -12,11 +12,17 @@ public class GameController : ControllerBase {
 
     private readonly IGetBoardUseCase _getBoardUseCase;
     private readonly ICreateBoardUseCase _createBoardUseCase;
+    private readonly IDeleteBoardUseCase _deleteBoardUseCase;
 
-    public GameController(ILogger<GameController> logger, ICreateBoardUseCase createBoardUseCase, IGetBoardUseCase getBoardUseCase) {
+    public GameController(
+        ILogger<GameController> logger,
+        ICreateBoardUseCase createBoardUseCase,
+        IGetBoardUseCase getBoardUseCase,
+        IDeleteBoardUseCase deleteBoardUseCase) {
         _logger = logger;
         _createBoardUseCase = createBoardUseCase;
         _getBoardUseCase = getBoardUseCase;
+        _deleteBoardUseCase = deleteBoardUseCase;
     }
 
     /// <summary>
@@ -55,5 +61,22 @@ public class GameController : ControllerBase {
         }
 
         return CreatedAtAction("GetBoard", new { id = createdBoard.Id }, createdBoard.ToDto());
+    }
+
+    /// <summary>
+    /// Deletes a board by its id
+    /// </summary>
+    /// <param name="id">The id of the board to be deleted</param>
+    [HttpDelete("{id:long}")]
+    public async Task<IActionResult> DeleteBoard(long id) {
+        _logger.LogInformation("Deleting board {Id}", id);
+
+        var boardDeleted = await _deleteBoardUseCase.DeleteBoard(id);
+
+        if (!boardDeleted) {
+            return NotFound();
+        }
+
+        return Ok();
     }
 }
