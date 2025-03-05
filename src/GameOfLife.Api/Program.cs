@@ -1,5 +1,6 @@
 using GameOfLife;
 using GameOfLife.Repositories;
+using GameOfLife.Services;
 using GameOfLife.UseCases;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,6 +25,9 @@ builder.Services.AddScoped<IGameRepository, GameRepository>();
 builder.Services.AddScoped<IGetBoardUseCase, GetBoardUseCase>();
 builder.Services.AddScoped<ICreateBoardUseCase, CreateBoardUseCase>();
 builder.Services.AddScoped<IDeleteBoardUseCase, DeleteBoardUseCase>();
+
+//Services
+builder.Services.AddScoped<IGameService, GameService>();
 
 var app = builder.Build();
 
