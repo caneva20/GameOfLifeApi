@@ -21,6 +21,7 @@ builder.Services.AddDbContext<GameOfLifeContext>(options =>
 builder.Services.AddScoped<IGameRepository, GameRepository>();
 
 //Use cases
+builder.Services.AddScoped<IGetBoardUseCase, GetBoardUseCase>();
 builder.Services.AddScoped<ICreateBoardUseCase, CreateBoardUseCase>();
 
 var app = builder.Build();

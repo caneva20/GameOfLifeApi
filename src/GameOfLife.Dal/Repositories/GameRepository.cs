@@ -9,6 +9,10 @@ public sealed class GameRepository : IGameRepository {
         _context = context;
     }
 
+    public async Task<Board?> GetBoard(long boardId) {
+        return await _context.Boards.FindAsync(boardId);
+    }
+
     public async Task<Board> CreateBoard(Board board) {
         _context.Add(board);
 
