@@ -20,4 +20,10 @@ public sealed class GameRepository : IGameRepository {
 
         return board;
     }
+
+    public async Task DeleteBoard(Board board) {
+        _context.Boards.Remove(board);
+
+        await _context.SaveChangesAsync();
+    }
 }
