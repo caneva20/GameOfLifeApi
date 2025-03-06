@@ -11,6 +11,7 @@ public class GameController : ControllerBase {
     private readonly ILogger<GameController> _logger;
 
     private readonly IGetBoardUseCase _getBoardUseCase;
+    private readonly IGetBoardStateUseCase _getBoardStateUseCase;
     private readonly ICreateBoardUseCase _createBoardUseCase;
     private readonly IDeleteBoardUseCase _deleteBoardUseCase;
 
@@ -18,11 +19,13 @@ public class GameController : ControllerBase {
         ILogger<GameController> logger,
         ICreateBoardUseCase createBoardUseCase,
         IGetBoardUseCase getBoardUseCase,
-        IDeleteBoardUseCase deleteBoardUseCase) {
+        IDeleteBoardUseCase deleteBoardUseCase,
+        IGetBoardStateUseCase getBoardStateUseCase) {
         _logger = logger;
         _createBoardUseCase = createBoardUseCase;
         _getBoardUseCase = getBoardUseCase;
         _deleteBoardUseCase = deleteBoardUseCase;
+        _getBoardStateUseCase = getBoardStateUseCase;
     }
 
     /// <summary>
@@ -41,6 +44,27 @@ public class GameController : ControllerBase {
         }
 
         return Ok(board.ToDto());
+    }
+
+    /// <summary>
+    /// Fetches a game board with its current state
+    /// </summary>
+    /// <param name="id">The id of the board</param>
+    /// <param name="iterations">The number of iterations to simulate the board before returning the state. Defaults to 1.</param>
+    /// <returns>The game board with its current state</returns>
+    [HttpGet("{id:long}/state")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<BoardDto?>> GetBoardState(long id, [FromQuery] int iterations = 1) {
+        _logger.LogInformation("Getting board state for board {Id}", id);
+
+        var board = await _getBoardStateUseCase.GetBoardState(id, iterations);
+
+        if (board == null) {
+            return NotFound();
+        }
+
+        return board.ToDto();
     }
 
     /// <summary>

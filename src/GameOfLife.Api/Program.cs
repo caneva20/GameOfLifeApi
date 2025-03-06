@@ -23,6 +23,7 @@ builder.Services.AddScoped<IGameRepository, GameRepository>();
 
 //Use cases
 builder.Services.AddScoped<IGetBoardUseCase, GetBoardUseCase>();
+builder.Services.AddScoped<IGetBoardStateUseCase, GetBoardStateUseCase>();
 builder.Services.AddScoped<ICreateBoardUseCase, CreateBoardUseCase>();
 builder.Services.AddScoped<IDeleteBoardUseCase, DeleteBoardUseCase>();
 
