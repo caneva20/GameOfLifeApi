@@ -26,7 +26,7 @@ public sealed class GetBoardStateUseCase : IGetBoardStateUseCase {
         _options = simulationOptions.Value;
     }
 
-    public async Task<Board?> GetBoardState(long id, int iterations) {
+    public async Task<(Board board, bool complete)?> GetBoardState(long id, int iterations) {
         try {
             var board = await _repository.GetBoard(id);
 
@@ -40,7 +40,7 @@ public sealed class GetBoardStateUseCase : IGetBoardStateUseCase {
 
             board.LiveCells = boardState.LiveCells.Select(x => new BoardCell { X = x.x, Y = x.y }).ToList();
 
-            return board;
+            return (board, _service.IsComplete(boardState));
         }
         catch (Exception e) {
             _logger.LogError(e, "Failed to get board state for board {Id}", id);

@@ -42,7 +42,7 @@ public class GetBoardStateUseCaseTest {
         var foundBoard = await _sut.GetBoardState(1, 1);
 
         //Assert
-        foundBoard.ShouldBe(board);
+        foundBoard.ShouldBe((board, false));
     }
 
     [Fact]

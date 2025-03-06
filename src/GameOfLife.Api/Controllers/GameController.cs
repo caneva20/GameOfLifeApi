@@ -51,20 +51,29 @@ public class GameController : ControllerBase {
     /// </summary>
     /// <param name="id">The id of the board</param>
     /// <param name="iterations">The number of iterations to simulate the board before returning the state. Defaults to 1.</param>
+    /// <param name="requireCompletion">If set to true, the board must have completed a simulation iteration to return a valid state. Defaults to false.</param>
     /// <returns>The game board with its current state</returns>
     [HttpGet("{id:long}/state")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<BoardDto?>> GetBoardState(long id, [FromQuery] int iterations = 1) {
+    [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
+    public async Task<ActionResult<BoardDto?>> GetBoardState(
+        long id,
+        [FromQuery] int iterations = 1,
+        [FromQuery] bool requireCompletion = false) {
         _logger.LogInformation("Getting board state for board {Id}", id);
 
-        var board = await _getBoardStateUseCase.GetBoardState(id, iterations);
+        var stateResult = await _getBoardStateUseCase.GetBoardState(id, iterations);
 
-        if (board == null) {
+        if (stateResult == null) {
             return NotFound();
         }
 
-        return board.ToDto();
+        if (requireCompletion && !stateResult.Value.complete) {
+            return UnprocessableEntity("Board does not finish with the given number of iterations.");
+        }
+
+        return stateResult.Value.board.ToDto();
     }
 
     /// <summary>
