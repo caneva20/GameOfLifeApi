@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\GameOfLife.Dal\GameOfLife.Dal.csproj" />
+      <ProjectReference Include="..\GameOfLife.Services\GameOfLife.Services.csproj" />
     </ItemGroup>
 
     <ItemGroup>
