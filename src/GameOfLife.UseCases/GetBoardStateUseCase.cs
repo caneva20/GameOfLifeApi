@@ -1,7 +1,9 @@
 ﻿using GameOfLife.Models;
+using GameOfLife.Models.Options;
 using GameOfLife.Repositories;
 using GameOfLife.Services;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace GameOfLife.UseCases;
 
@@ -10,10 +12,18 @@ public sealed class GetBoardStateUseCase : IGetBoardStateUseCase {
     private readonly IGameRepository _repository;
     private readonly IGameService _service;
 
-    public GetBoardStateUseCase(ILogger<GetBoardStateUseCase> logger, IGameRepository repository, IGameService service) {
+    private readonly SimulationOptions _options;
+
+    public GetBoardStateUseCase(
+        ILogger<GetBoardStateUseCase> logger,
+        IGameRepository repository,
+        IGameService service,
+        IOptions<SimulationOptions> simulationOptions) {
         _logger = logger;
         _repository = repository;
         _service = service;
+
+        _options = simulationOptions.Value;
     }
 
     public async Task<Board?> GetBoardState(long id, int iterations) {
@@ -24,7 +34,7 @@ public sealed class GetBoardStateUseCase : IGetBoardStateUseCase {
                 return null;
             }
 
-            var boardState = _service.BuildState(board, 10); //TODO: Read max history from config
+            var boardState = _service.BuildState(board, _options.HistorySize);
 
             _service.Simulate(boardState, iterations);
 

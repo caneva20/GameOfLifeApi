@@ -1,4 +1,5 @@
 using GameOfLife;
+using GameOfLife.Models.Options;
 using GameOfLife.Repositories;
 using GameOfLife.Services;
 using GameOfLife.UseCases;
@@ -17,6 +18,8 @@ builder.Services.AddDbContext<GameOfLifeContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
 });
+
+builder.Services.Configure<SimulationOptions>(builder.Configuration.GetSection("Simulation"));
 
 //Repositories
 builder.Services.AddScoped<IGameRepository, GameRepository>();

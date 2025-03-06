@@ -1,9 +1,11 @@
 ﻿using GameOfLife.Models;
+using GameOfLife.Models.Options;
 using GameOfLife.Repositories;
 using GameOfLife.Services;
 using GameOfLife.UseCases;
 using JetBrains.Annotations;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using NSubstitute.ExceptionExtensions;
 using NSubstitute.ReturnsExtensions;
 
@@ -21,7 +23,11 @@ public class GetBoardStateUseCaseTest {
         _gameRepositorySub = Substitute.For<IGameRepository>();
         _gameServiceSub = Substitute.For<IGameService>();
 
-        _sut = new GetBoardStateUseCase(Substitute.For<ILogger<GetBoardStateUseCase>>(), _gameRepositorySub, _gameServiceSub);
+        _sut = new GetBoardStateUseCase(
+            Substitute.For<ILogger<GetBoardStateUseCase>>(),
+            _gameRepositorySub,
+            _gameServiceSub,
+            new OptionsWrapper<SimulationOptions>(new SimulationOptions()));
     }
 
     [Fact]
